@@ -1,0 +1,25 @@
+{
+    "name": "rias/statamic-markdown-highlight",
+    "license": "MIT",
+    "description": "This Addon provides pre-rendered syntax highlighting based on highlight.js",
+    "type": "statamic-addon",
+    "autoload": {
+        "psr-4": {
+            "Rias\\MarkdownHighlight\\": "src"
+        }
+    },
+    "require": {
+        "spatie/commonmark-highlighter": "^2.1.0"
+    },
+    "extra": {
+        "statamic": {
+            "name": "Markdown Highlight",
+            "description": "This Addon provides pre-rendered syntax highlighting based on highlight.js"
+        },
+        "laravel": {
+            "providers": [
+                "Rias\\MarkdownHighlight\\ServiceProvider"
+            ]
+        }
+    }
+}
