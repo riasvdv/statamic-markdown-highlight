@@ -1,4 +1,4 @@
-![Icon](icon.svg)
+![Icon](icon.png)
 
 [![Latest Version](https://img.shields.io/github/release/riasvdv/statamic-color-swatches.svg?style=flat-square)](https://github.com/riasvdv/statamic-color-swatches/releases)
 
