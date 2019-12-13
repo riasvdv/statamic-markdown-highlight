@@ -1,6 +1,6 @@
 ![Icon](icon.png)
 
-[![Latest Version](https://img.shields.io/github/release/riasvdv/statamic-color-swatches.svg?style=flat-square)](https://github.com/riasvdv/statamic-color-swatches/releases)
+[![Latest Version](https://img.shields.io/github/release/riasvdv/statamic-markdown-highlight.svg?style=flat-square)](https://github.com/riasvdv/statamic-markdown-highlight/releases)
 
 # Markdown Highlight
 
