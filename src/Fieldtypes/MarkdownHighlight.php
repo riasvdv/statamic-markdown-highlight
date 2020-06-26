@@ -1,6 +1,6 @@
 <?php
 
-namespace Rias\MarkdownHighlight;
+namespace Rias\MarkdownHighlight\Fieldtypes;
 
 use League\CommonMark\Block\Element\FencedCode;
 use League\CommonMark\Block\Element\IndentedCode;
