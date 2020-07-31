@@ -1,4 +1,4 @@
-![Icon](icon.png)
+![Icon](https://github.com/riasvdv/statamic-markdown-highlight/raw/master/icon.png)
 
 [![Latest Version](https://img.shields.io/github/release/riasvdv/statamic-markdown-highlight.svg?style=flat-square)](https://github.com/riasvdv/statamic-markdown-highlight/releases)
 
