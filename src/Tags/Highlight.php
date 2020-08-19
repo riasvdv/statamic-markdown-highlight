@@ -9,7 +9,7 @@ class Highlight extends Tags
 {
     public function css()
     {
-        $styleSheet = getStyleSheet($this->$this->params->get("style", "github-gist"));
+        $styleSheet = getStyleSheet($this->params->get("style", "github-gist"));
 
         return $this->minifyCss("<style>{$styleSheet}</style>");
     }
