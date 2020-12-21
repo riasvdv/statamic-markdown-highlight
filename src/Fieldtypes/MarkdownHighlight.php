@@ -37,7 +37,7 @@ class MarkdownHighlight extends MarkdownFieldtype
 
         $parser = $parser->newInstance()->addExtension(function () {
             return new CodeHighlighterExtension(
-               $this->config('autodetect_languages')
+                $this->config('autodetect_languages')
             );
         });
 
