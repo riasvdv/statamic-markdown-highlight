@@ -2,9 +2,9 @@
 
 namespace Rias\MarkdownHighlight\Fieldtypes;
 
+use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Statamic\Fieldtypes\Markdown as MarkdownFieldtype;
 use Statamic\Facades\Markdown as MarkdownManager;
-use Rias\MarkdownHighlight\Extensions\CodeHighlighterExtension;
 
 class MarkdownHighlight extends MarkdownFieldtype
 {
@@ -27,36 +27,42 @@ class MarkdownHighlight extends MarkdownFieldtype
     public function augment($value)
     {
         if (is_null($value)) {
-            return;
+            return '';
         }
 
-        /** @var \Statamic\Markdown\Parser */
-        $parser = MarkdownManager::parser(
-            $this->config('parser', 'default')
-        );
+        $cacheKey = md5($value) . config('statamic.markdown-highlight.theme');
 
-        $parser = $parser->newInstance()->addExtension(function () {
-            return new CodeHighlighterExtension(
-                $this->config('autodetect_languages')
+        if (! config('statamic.markdown-highlight.cache')) {
+            cache()->forget($cacheKey);
+        }
+
+        return cache()->rememberForever($cacheKey, function () use ($value) {
+            /** @var \Statamic\Markdown\Parser */
+            $parser = MarkdownManager::parser(
+                $this->config('parser', 'default')
             );
+
+            $parser = $parser->newInstance()->addExtension(function () {
+                return new HighlightCodeExtension(config('statamic.markdown-highlight.theme', 'github-light'));
+            });
+
+            if ($this->config('automatic_line_breaks')) {
+                $parser = $parser->withAutoLineBreaks();
+            }
+
+            if ($this->config('escape_markup')) {
+                $parser = $parser->withMarkupEscaping();
+            }
+
+            if ($this->config('automatic_links')) {
+                $parser = $parser->withAutoLinks();
+            }
+
+            if ($this->config('smartypants')) {
+                $parser = $parser->withSmartPunctuation();
+            }
+
+            return $parser->parse((string) $value);
         });
-
-        if ($this->config('automatic_line_breaks')) {
-            $parser = $parser->withAutoLineBreaks();
-        }
-
-        if ($this->config('escape_markup')) {
-            $parser = $parser->withMarkupEscaping();
-        }
-
-        if ($this->config('automatic_links')) {
-            $parser = $parser->withAutoLinks();
-        }
-
-        if ($this->config('smartypants')) {
-            $parser = $parser->withSmartPunctuation();
-        }
-
-        return $parser->parse((string) $value);
     }
 }

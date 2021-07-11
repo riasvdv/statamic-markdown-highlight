@@ -9,7 +9,8 @@
         }
     },
     "require": {
-        "spatie/commonmark-highlighter": "^2.1.0"
+        "statamic/cms": "~3.0|~3.1",
+        "spatie/commonmark-shiki-highlighter": "^1.1.0"
     },
     "extra": {
         "statamic": {

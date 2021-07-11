@@ -6,7 +6,7 @@
 
 > Markdown Syntax Highlighting for Statamic 3.
 
-This Addon provides pre-rendered syntax highlighting based on highlight.js, so no need for any extra JavaScript to get some color in your code samples!
+This Addon provides pre-rendered syntax highlighting based on Shiki, so no need for any extra JavaScript to get some color in your code samples!
 
 ![Screenshot](./docs/img/markdown-highlight-screenshot.png)
 
@@ -16,6 +16,18 @@ Require it using Composer.
 
 ```
 composer require rias/statamic-markdown-highlight
+```
+
+In your project, you should have the JavaScript package `shiki` installed. You can install it via npm
+
+```bash
+npm install shiki
+```
+
+or Yarn
+
+```bash
+yarn add shiki
 ```
 
 ## Using Markdown Highlight
@@ -38,32 +50,9 @@ sections:
 
 For other options, this fieldtype extends the default [Statamic Markdown](https://statamic.dev/fieldtypes/markdown) fieldtype.
 
-## Tag
+## Highlighting lines and other functionalities
 
-Add the Markdown Highlight tag to your template, this will inline the correct syntax highlighting theme.
-
-```twig
-{{ highlight:css }}
-```
-
-The default theme is `github-gist`, you can find more [styles here](https://highlightjs.org/static/demo/) and define it with your tag.
-
-```twig
-{{ highlight:css style="darcula" }}
-```
-
-## Highlighting specific lines
-
-Line numbers start at 1.
-
-\`\`\`php - Don't highlight any lines  
-\`\`\`php{4} - Highlight just line 4  
-\`\`\`php{4-6} - Highlight the range of lines from 4 to 6 (inclusive)  
-\`\`\`php{1,5} - Highlight just lines 1 and 5 on their own  
-\`\`\`php{1-3,5} - Highlight 1 through 3 and then 5 on its own  
-\`\`\`php{5,7,2-3} - The order of lines don't matter  
-
-However, specifying 3-2 will not work.  
+Under the hood this package uses `spatie/commonmark-shiki-highlighter`, you can [read those docs](https://github.com/spatie/commonmark-shiki-highlighter/edit/main/README.md) to see what else is possible.
 
 ---
 Brought to you by [Rias](https://rias.be)
