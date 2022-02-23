@@ -54,5 +54,20 @@ For other options, this fieldtype extends the default [Statamic Markdown](https:
 
 Under the hood this package uses `spatie/commonmark-shiki-highlighter`, you can [read those docs](https://github.com/spatie/commonmark-shiki-highlighter/edit/main/README.md) to see what else is possible.
 
+## Change default shiki theme
+
+You need to publish the config file. 
+
+```bash
+php artisan vendor:publish --tag=statamic-markdown-highlight-config --force
+```
+
+Go to config/statamic/markdown-highlight.php.
+
+```php
+'theme' => 'github-light', // change this 
+```
+Check supported themes [shiki themes](https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-themes 'shiki themes').
+
 ---
 Brought to you by [Rias](https://rias.be)
