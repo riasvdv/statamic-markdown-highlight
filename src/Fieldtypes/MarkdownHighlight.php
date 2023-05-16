@@ -14,14 +14,22 @@ class MarkdownHighlight extends MarkdownFieldtype
 
     protected function configFieldItems(): array
     {
-        return array_merge((new parent)->configFieldItems(), [
-            'autodetect_languages' => [
-                'display' => __('Auto-detect Languages'),
-                'instructions' => __('Space-separated list of languages to detect (leave empty to detect all)'),
-                'type' => 'text',
-                'width' => 100,
-            ],
-        ]);
+        return array_map(function ($options) {
+            if ($options['display'] == 'Editor') {
+                $options['fields'] = array_merge($options['fields'], [
+                    'autodetect_languages' => [
+                        'display' => __('Auto-detect Languages'),
+                        'instructions' => __('Space-separated list of languages to detect (leave empty to detect all)'),
+                        'type' => 'text',
+                        'width' => 100,
+                    ],
+                ]);
+
+                return $options;
+            }
+
+            return $options;
+        }, parent::configFieldItems());
     }
 
     public function augment($value)
