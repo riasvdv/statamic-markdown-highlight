@@ -51,6 +51,10 @@ class MarkdownHighlight extends MarkdownFieldtype
             );
 
             $parser = $parser->newInstance()->addExtension(function () {
+                if (in_array(\Spatie\SidecarShiki\Functions\HighlightFunction::class, config('sidecar.functions', []))) {
+                    return new \Spatie\SidecarShiki\Commonmark\HighlightCodeExtension(config('statamic.markdown-highlight.theme', 'github-light'));
+                }
+
                 return new HighlightCodeExtension(config('statamic.markdown-highlight.theme', 'github-light'));
             });
 
