@@ -1,3 +1,7 @@
+> [!WARNING]
+> This package has been abandoned, use [Statamic's markdown customization](https://statamic.dev/extending/markdown#adding-extensions) instead
+
+
 ![Icon](https://github.com/riasvdv/statamic-markdown-highlight/raw/master/icon.png)
 
 [![Latest Version](https://img.shields.io/github/release/riasvdv/statamic-markdown-highlight.svg?style=flat-square)](https://github.com/riasvdv/statamic-markdown-highlight/releases)
